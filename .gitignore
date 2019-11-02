@@ -9,3 +9,8 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Files created during compilation
+\#init.el\#
+elpa/*
+transient/*
