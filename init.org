@@ -130,7 +130,7 @@ The configuration assumes that the packages listed below are installed. To ensur
        (packages
         '(company              ; Modular text completion framework
           counsel              ; Various completion functions using Ivy
-          doom-themes          ; An opinionated pack of modern color-themes
+          doom-modeline        ; A minimal and modern modeline
           editorconfig         ; EditorConfig Emacs Plugin
           ivy                  ; Incremental Vertical completYon
           magit                ; control Git from Emacs
@@ -226,26 +226,19 @@ Sometimes I accidentally press =C-x C-c= instead of =C-x C-s= and close emacs; i
 
 ** Visual Theme
 
-Nothing special here. I just chose a popular dark theme =doom-molokai=.
+I use my personal version of the uJelly theme, which may be found on my Github.
 
 #+BEGIN_SRC emacs-lisp
-;; Global settings (defaults)
-(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-      doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
-;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-;; may have their own settings.
-(load-theme 'doom-molokai t)
-
-;; Enable flashing mode-line on errors
-(doom-themes-visual-bell-config)
-
-;; Enable custom neotree theme (all-the-icons must be installed!)
-(doom-themes-neotree-config)
-
-;; Corrects (and improves) org-mode's native fontification.
-(doom-themes-org-config)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/Themes/Emacs-Jelly-Theme")
+(load-theme 'ujelly t)
 #+END_SRC
+
+The =doom-modeline= package makes the modeline look much nicer. It requires a one-time command invocation of =M-x all-the-icons-install-fonts= from the =all-the-icons= package.
+
+#+BEGIN_SRC emacs-lisp
+(doom-modeline-mode 1)
+#+END_SRC
+
 
 ** Org Mode
 
