@@ -128,7 +128,8 @@ The configuration assumes that the packages listed below are installed. To ensur
 #+BEGIN_SRC emacs-lisp
 (let* ((package--builtins nil)
        (packages
-        '(company              ; Modular text completion framework
+        '(ace-jump-mode        ; A quick cursor location minor mode for emacs
+          company              ; Modular text completion framework
           counsel              ; Various completion functions using Ivy
           doom-modeline        ; A minimal and modern modeline
           editorconfig         ; EditorConfig Emacs Plugin
@@ -312,4 +313,12 @@ These are packages created by Magnar Sveen, the brilliant youtuber behind Emacs 
 ;; Expand Region
 ;; Expand in terms of semantic units. The reverse can be achieved with C-- C-=
 (global-set-key (kbd "C-=") 'er/expand-region)
+#+END_SRC
+
+** Ace Jump Mode
+
+Move around the current buffer at breakneck speeds.
+
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 #+END_SRC
