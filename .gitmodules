@@ -1,0 +1,3 @@
+[submodule "Themes/Emacs-Jelly-Theme"]
+	path = Themes/Emacs-Jelly-Theme
+	url = https://github.com/Jacobinski/Emacs-Jelly-Theme
