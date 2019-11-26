@@ -226,7 +226,7 @@ Sometimes I accidentally press =C-x C-c= instead of =C-x C-s= and close emacs; i
 
 ** Visual Theme
 
-Nothing special here. I just chose a popular light theme =doom-one-light=.
+Nothing special here. I just chose a popular dark theme =doom-molokai=.
 
 #+BEGIN_SRC emacs-lisp
 ;; Global settings (defaults)
@@ -235,7 +235,7 @@ Nothing special here. I just chose a popular light theme =doom-one-light=.
 
 ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
 ;; may have their own settings.
-(load-theme 'doom-one-light t)
+(load-theme 'doom-molokai t)
 
 ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
