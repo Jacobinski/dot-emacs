@@ -249,6 +249,12 @@ The =doom-modeline= package makes the modeline look much nicer. It requires a on
 (doom-modeline-mode 1)
 #+END_SRC
 
+Add line numbers in every buffer. This might might become annoying for text-modes, but we can add some logic to disable it in those modes if it becomes necessary.
+
+#+BEGIN_SRC emacs-lisp
+(global-linum-mode 1)
+#+END_SRC
+
 
 ** Org Mode
 
