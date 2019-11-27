@@ -166,6 +166,13 @@ I run this configuration mostly on Mac OS X, so we need a couple of settings to 
     (mac-auto-operator-composition-mode 1)))'
 #+END_SRC
 
+Map the OSX command key to be meta as it is in a better location for thumb pressing. Additionally, we can change control to be a super key since it no longer needs to fill the role of meta.
+
+#+BEGIN_SRC emacs-lisp
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+#+END_SRC
+
 ** Ivy
  
 I choose to use Ivy over =ido-mode= and =helm= due to familarity. There is a nice [[http://sam217pa.github.io/2016/09/13/from-helm-to-ivy][blog post]] which discusses Helm's large size and it was one of the reasons I initially chose to use Ivy. A different framework may eventually replace Ivy if it has features which better fit my workflow.
@@ -322,3 +329,4 @@ Move around the current buffer at breakneck speeds.
 #+BEGIN_SRC emacs-lisp
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 #+END_SRC
+
