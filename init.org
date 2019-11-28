@@ -270,6 +270,12 @@ Add line numbers in every buffer. This might might become annoying for text-mode
 (global-linum-mode 1)
 #+END_SRC
 
+Change the font and size
+
+#+BEGIN_SRC emacs-lisp
+(set-frame-font "Source Code Pro 13" nil t)
+#+END_SRC
+
 
 ** Org Mode
 
