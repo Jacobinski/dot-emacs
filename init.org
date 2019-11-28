@@ -170,8 +170,8 @@ I run this configuration mostly on Mac OS X, so we need a couple of settings to 
 Map the OSX command key to be meta as it is in a better location for thumb pressing. Additionally, we can change control to be a super key since it no longer needs to fill the role of meta.
 
 #+BEGIN_SRC emacs-lisp
-(setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
 #+END_SRC
 
 ** Ivy
