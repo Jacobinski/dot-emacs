@@ -161,6 +161,8 @@ I run this configuration mostly on Mac OS X, so we need a couple of settings to 
 (when (memq window-system '(mac ns))
   (setq ns-pop-up-frames nil
         select-enable-clipboard t)
+  (add-to-list 'load-path "~/elisp")
+  (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize)
   (when (fboundp 'mac-auto-operator-composition-mode)
     (mac-auto-operator-composition-mode 1)))'
