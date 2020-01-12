@@ -134,11 +134,13 @@ The configuration assumes that the packages listed below are installed. To ensur
           doom-modeline        ; A minimal and modern modeline
           editorconfig         ; EditorConfig Emacs Plugin
           expand-region        ; Increase selected region by semantic units.
+          highlight-numbers    ; Highlight numbers in source code
           ivy                  ; Incremental Vertical completYon
           magit                ; control Git from Emacs
           multiple-cursors     ; Multiple cursors for Emacs.
           omnisharp            ; Omnicompletion (intellisense) and more for C#
           org                  ; Outline-based notes management and organizer
+          rainbow-mode         ; Colorize color names in buffers
           swiper               ; Isearch with an overview. Oh, man!
           try                  ; Try out Emacs packages
           which-key)))         ; Display available keybindings in popup
@@ -241,14 +243,20 @@ Sometimes I accidentally press =C-x C-c= instead of =C-x C-s= and close emacs; i
 I use my personal version of the uJelly theme, which may be found on my Github.
 
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.emacs.d/Themes/Emacs-Jelly-Theme")
-(load-theme 'ujelly t)
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/Themes/Emacs-Jelly-Theme")
+  (load-theme 'ujelly t)
 #+END_SRC
 
 The =doom-modeline= package makes the modeline look much nicer. It requires a one-time command invocation of =M-x all-the-icons-install-fonts= from the =all-the-icons= package.
 
 #+BEGIN_SRC emacs-lisp
 (doom-modeline-mode 1)
+#+END_SRC
+
+Hightlight numbers in source code. This should make constant numbers have the =font-lock-constant-face=.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'prog-mode-hook 'highlight-numbers-mode)
 #+END_SRC
 
 Change the color of the vertical buffer to be the same color as our comments, rather than bright white.
@@ -261,18 +269,35 @@ Change the color of the vertical buffer to be the same color as our comments, ra
                     :foreground "#363636")
 #+END_SRC
 
+Set the titlebar to match the background color using this Emacs-plus specific feature.
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+#+END_SRC
+
+Remove the icon and text in the titlebar.
+
+#+BEGIN_SRC emacs-lisp
+;; https://emacs.stackexchange.com/questions/33680/how-to-remove-the-icon-in-the-titlebar
+(setq ns-use-proxy-icon nil)
+(setq frame-title-format nil)
+#+END_SRC
+
 Add line numbers in every buffer. This might might become annoying for text-modes, but we can add some logic to disable it in those modes if it becomes necessary.
 
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
 #+END_SRC
 
-Change the font and size
+Change the font and font size.
 
 #+BEGIN_SRC emacs-lisp
-(set-frame-font "Source Code Pro 13" nil t)
-#+END_SRC
+(set-face-attribute 'default nil
+                    :height 120)
 
+(set-frame-font "Source Code Pro" nil t)
+#+END_SRC
 
 ** Org Mode
 
