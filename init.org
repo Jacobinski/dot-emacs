@@ -240,6 +240,19 @@ Sometimes I accidentally press =C-x C-c= instead of =C-x C-s= and close emacs; i
 (setq confirm-kill-emacs 'y-or-n-p)
 #+END_SRC
 
+Highlight characters that go over an 80 character limit. This configuration only applies to programming modes since I also use Emacs for writing, and I allow org-mode to wrap the lines for me. Taken from: https://stackoverflow.com/a/18855782
+
+#+BEGIN_SRC emacs-lisp
+(require 'whitespace)
+
+;; Limit the line length to 80
+(setq whitespace-line-column 80)
+(setq whitespace-style '(face lines-tail))
+
+;; Only display this configuration in programming modes
+(add-hook 'prog-mode-hook 'whitespace-mode)
+#+END_SRC
+
 ** Visual Theme
 
 I use my personal version of the uJelly theme, which may be found on my Github.
