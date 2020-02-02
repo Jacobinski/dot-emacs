@@ -143,7 +143,9 @@ The configuration assumes that the packages listed below are installed. To ensur
           rainbow-mode         ; Colorize color names in buffers
           swiper               ; Isearch with an overview. Oh, man!
           try                  ; Try out Emacs packages
-          which-key)))         ; Display available keybindings in popup
+          which-key            ; Display available keybindings in popup
+          writeroom-mode       ; Minor mode for distraction-free writing
+          )))
   (ignore-errors ;; This package is only relevant for Mac OS X.
     (when (memq window-system '(mac ns))
       (push 'exec-path-from-shell packages)
