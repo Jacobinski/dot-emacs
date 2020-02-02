@@ -294,7 +294,7 @@ Change the font and font size.
 
 #+BEGIN_SRC emacs-lisp
 (set-face-attribute 'default nil
-                    :height 120)
+                    :height 130)
 
 (set-frame-font "Source Code Pro" nil t)
 #+END_SRC
