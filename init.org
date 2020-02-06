@@ -258,8 +258,8 @@ Highlight characters that go over an 80 character limit. This configuration only
 I use my personal version of the uJelly theme, which may be found on my Github.
 
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/Themes/Emacs-Jelly-Theme")
-  (load-theme 'ujelly t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/Themes/Emacs-Jelly-Theme")
+(load-theme 'ujelly t)
 #+END_SRC
 
 The =doom-modeline= package makes the modeline look much nicer. It requires a one-time command invocation of =M-x all-the-icons-install-fonts= from the =all-the-icons= package.
@@ -297,12 +297,6 @@ Remove the icon and text in the titlebar.
 ;; https://emacs.stackexchange.com/questions/33680/how-to-remove-the-icon-in-the-titlebar
 (setq ns-use-proxy-icon nil)
 (setq frame-title-format nil)
-#+END_SRC
-
-Add line numbers in every buffer. This might might become annoying for text-modes, but we can add some logic to disable it in those modes if it becomes necessary.
-
-#+BEGIN_SRC emacs-lisp
-(global-linum-mode 1)
 #+END_SRC
 
 Change the font and font size.
