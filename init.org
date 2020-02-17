@@ -5,7 +5,7 @@
 
 * About
 
-This is an Emacs configuration file written in [[http://orgmode.org][Org mode]]. It is an attempt to keep my =~/.emacs.d= organized. This is all based off of [[https://raw.githubusercontent.com/larstvei/dot-emacs/master/init.org][this repository]], where I stole much of the setup and initial configurations. 
+This is an Emacs configuration file written in [[http://orgmode.org][Org mode]]. It is an attempt to keep my =~/.emacs.d= organized. This is all based off of [[https://raw.githubusercontent.com/larstvei/dot-emacs/master/init.org][this repository]], where I stole much of the setup and initial configurations.
 
 If you would like to try out this config, follow these steps:
 
@@ -136,7 +136,9 @@ The configuration assumes that the packages listed below are installed. To ensur
           expand-region        ; Increase selected region by semantic units.
           highlight-numbers    ; Highlight numbers in source code
           ivy                  ; Incremental Vertical completYon
-          magit                ; control Git from Emacs
+          langtool             ; Grammar check utility using LanguageTool
+          magit                ; Control Git from Emacs
+          markdown-mode        ; Major mode for Markdown-formatted text
           multiple-cursors     ; Multiple cursors for Emacs.
           omnisharp            ; Omnicompletion (intellisense) and more for C#
           org                  ; Outline-based notes management and organizer
@@ -382,9 +384,54 @@ These are packages created by Magnar Sveen, the brilliant youtuber behind Emacs 
 
 ** Ace Jump Mode
 
-Move around the current buffer at breakneck speeds.
+Move around the current buffer quickly using =C-c SPC=.
 
 #+BEGIN_SRC emacs-lisp
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; Override org mode's keybinding
+(require 'org)
+(define-key org-mode-map (kbd "C-c SPC") 'ace-jump-mode)
 #+END_SRC
 
+Override the
+
+** Writing
+
+Activate flyspell to check for typos in all text modes.
+
+#+BEGIN_SRC emacs-lisp
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
+#+END_SRC
+
+Blacklist flyspell from text modes which we have no control over.
+
+#+BEGIN_SRC emacs-lisp
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode -1))))
+#+END_SRC
+
+Activate flyspell to various programming modes to check the grammer of comments and strings.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'python-mode-hook
+    (lambda ()
+    (flyspell-prog-mode)
+    ))
+#+END_SRC
+
+Following a [[https://simpleit.rocks/lisp/emacs/writing-in-emacs-checking-spelling-style-and-grammar/][blog post]] about writing in Emacs, we install [[https://languagetool.org/][Language Tool]] on our machine and use it to perform grammar checking on save.
+
+#+BEGIN_SRC emacs-lisp
+(setq langtool-language-tool-jar "~/Software/LanguageTool-4.8/languagetool-commandline.jar")
+(require 'langtool)
+#+END_SRC
+
+Check markdown buffers on save using the =langtool-check= function.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'markdown-mode-hook
+    (lambda () 
+    (add-hook 'after-save-hook 'langtool-check nil 'make-it-local)))
+#+END_SRC
