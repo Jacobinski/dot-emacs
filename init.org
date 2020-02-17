@@ -255,6 +255,12 @@ Highlight characters that go over an 80 character limit. This configuration only
 (add-hook 'prog-mode-hook 'whitespace-mode)
 #+END_SRC
 
+Save all backups to a single folder.
+
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist '(("." . "~/.backups/")))
+#+END_SRC
+
 ** Visual Theme
 
 I use my personal version of the uJelly theme, which may be found on my Github.
